@@ -1,0 +1,63 @@
+.seat-row {
+    float: left;
+    position: relative;
+    white-space: nowrap;
+    align-items: baseline;
+    display: flex;
+    -ms-flex-pack: justify;
+    min-width: 200px;
+    clear: both;
+    margin: 3px 0;
+}
+
+.divide-category{
+margin-right: 20px
+}
+
+.seat-label{
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.3rem;
+    padding: 4px 0;
+    border-radius: 5px;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+    border: 1px solid;
+}
+
+.seat {
+width: 25px;
+padding: 0 10px;
+}
+
+.selected{
+   background: blue;
+}
+.booked {
+   background: #F42536;
+}
+
+.available{
+   background: wheat;
+}
+
+.new-booking{
+clear: both;
+padding: 15px 0px 0px 10px;
+}
+.conformation-container{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+input {
+  margin-bottom:3px;
+  padding:10px;
+  width: 100%;
+  border:1px solid #CCC
+}
