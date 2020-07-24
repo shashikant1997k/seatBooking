@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { TicketBookingModule } from './ticket-booking/ticket-booking.module';
+import { SeatBookingModule } from './booking/booking.module';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { bootstrap } from 'bootstrap';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    TicketBookingModule,
-    HttpClientModule
+    SeatBookingModule,
   ],
   declarations: [
     AppComponent

@@ -1,39 +1,37 @@
 
-<div *ngIf="flag" style="display: flex;justify-content: center;margin-top: 6%;">
-  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit(bookingForm)" style="width: 20%;border: 1px solid darkgray;
-  padding: 3% 5%;">
-    <div>
-      <input type="text" class="form-control" placeholder="User ID" formControlName="userID">
-    </div>
-    <div style="margin-top: 6%;">
-      <input class="form-control" placeholder="Name" formControlName="name">
-    </div>
-    <div style="margin-top: 6%;">
-      <input type="number" class="form-control" placeholder="No of Seats" formControlName="count">
-    </div>
+<div *ngIf="flag" class="wrapper">
+  <h3 style="text-align: center;margin-bottom: 2%;">Seat Reservation System</h3>
+  <form [formGroup]="bookingForm" class="form-signin" (ngSubmit)="onSubmit(bookingForm)">
+    <input type="text" class="form-control" placeholder="Name" formControlName="name">
+    <input type="number" class="form-control" placeholder="No of Seats" formControlName="count">
 
-    <button style="margin-top: 6%;width: 70px;padding: 7px;" type="submit" [disabled]="bookingForm.invalid">Book</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="bookingForm.invalid">Book</button>
 
-    <button style="margin-top: 6%;width: 70px;padding: 7px;margin-left: 10%;" (click)="showAllSeats()">All Seat</button>
+    <button class="btn btn-lg btn-success btn-block" (click)="showAllSeats()">All Seat</button>
     <div style="color: red;">{{error}}</div>
   </form>
 
 </div>
 <div class="conformation-container" *ngIf="!flag">
-  <div style="width: 30%;padding: 10% 0 0 8%;">
-    <div class="seat" style="display: flex;width: 75%;">
-      <div class="seat-label available " style="height: 1.2rem;width: 8%;"></div>
+  <div style="width: 30%;padding: 10% 0 0 4%;position: relative;">
+    <div class="seat" style="display: flex;width: 100%;">
+      <div class="seat-label available " style="height: 2rem;width: 10%;"></div>
       <div style="margin: 1.8% 0 0 5%;">Available Seat</div>
     </div>
-    <div class="seat" style="padding: 15px 10px;display: flex;width: 75%;">
-      <div class="seat-label booked" style="height: 1.2rem;width: 8%;"></div>
+    <div class="seat" style="padding: 15px 10px;display: flex;width: 100%;">
+      <div class="seat-label booked" style="height: 2rem;width: 10%;"></div>
       <div style="margin: 1.8% 0 0 5%;">Booked Seat</div>
     </div>
-    <div class="seat" style="display: flex;width: 75%;">
-      <div class="seat-label selected" style="height: 1.2rem;width: 8%;"></div>
+    <div class="seat" style="display: flex;width: 100%;">
+      <div class="seat-label selected" style="height: 2rem;width: 10%;"></div>
       <div style="margin: 1.8% 0 0 5%;">Selected Seat</div>
     </div>
+
+    <div class="new-booking">
+      <button class="btn btn-sm btn-primary" (click)="openBookingForm()"> New Booking</button>
+    </div>
   </div>
+
   <div>
     <div class="seat-row">
       <div  *ngFor ="let seat of bookingInfo.seats">
@@ -131,9 +129,7 @@
         </div>
       </div>
     </div>
-    <div class="new-booking">
-      <button style="padding: 7px;" (click)="openBookingForm()"> New Booking</button>
-    </div>
+
   </div>
 </div>
 
