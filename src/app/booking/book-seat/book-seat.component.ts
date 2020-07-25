@@ -30,8 +30,6 @@ export class BookSeatComponent implements OnInit {
   // submit name and no. of seats
   public onSubmit(formValues: FormGroup) {
     let bookseats: SeatInfoModel[] = [];
-    let row: number[] = [];
-    let rowNumber:any = {};
     const userName: string = formValues.controls.name.value;
     const requiredSeats: number = parseInt(formValues.controls['count'].value);
     if (requiredSeats > this.availablseats.length) {
@@ -70,8 +68,11 @@ export class BookSeatComponent implements OnInit {
     this.availablseats.forEach((seat, index) => {
       row.push(seat.row);
     });
-console.log(rowNumber)
-    row.forEach(function(i) { rowNumber[i] = (rowNumber[i]||0) + 1;});
+
+    row.forEach(function(i) {
+       rowNumber[i] = (rowNumber[i]||0) + 1;
+    });
+
     if(count <= 7){
       for (let key in rowNumber) {
         console.log(key, count)
@@ -126,37 +127,18 @@ console.log(rowNumber)
 
   private checkRow(count: number, row: number) {
     let bookseats: SeatInfoModel[] = [];
-
     this.availablseats.forEach((seat, index) => {
       if (bookseats.length < count) {
         if (seat.row == row) {
           bookseats.push(seat);
         }
-        if (bookseats.length == count && count > 1) {
-          bookseats = this.chekIfSameRow(bookseats);
-        }
       }
     });
-    console.log(bookseats)
+
     if (bookseats.length == count) {
       return bookseats;
     } else {
       return [];
-    }
-  }
-
-  chekIfSameRow(bookseats: SeatInfoModel[]): SeatInfoModel[] {
-    let row: number[] = [];
-    let rowNumber: any = {};
-    bookseats.forEach(seat => {
-      row.push(seat.row);
-    })
-
-    if (Array.from(new Set(row)).length == 1) {
-      return bookseats;
-    } else {
-      const removeIndex = bookseats.splice(-1, 1);
-      return removeIndex;
     }
   }
 
